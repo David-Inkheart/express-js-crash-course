@@ -1,0 +1,29 @@
+{{! Page Title }}
+<h1 class="text-center mb-3 text-info" >{{title}}</h1>
+
+{{! Form to add a book }}
+<form action="/api/books" method="POST" class="mb-5">
+    <div class="form-group my-3">
+        <label for="title">Title</label>
+        <input type="text" name="title" placeholder="Title" class="form-control" id="title">
+    </div>
+    <div class="form-group my-3">
+        <label for="author">Author</label>
+        <input type="text" name="author" placeholder="Author" class="form-control" id="author">
+    </div>
+    <div class="form-group my-3">
+        <label for="genre">Genre</label>
+        <input type="text" name="genre" placeholder="genre" class="form-control" id="genre">
+    </div>
+    <input type="submit" value="Add Book" class="btn btn-info btn-block">
+</form>
+
+{{! List of books }}
+<h4 class="display-6">Books</h4>
+<ul class="list-group">
+    {{#each books}}
+        <li class="list-group-item">{{this.title}}: <span class="ms-3 text-info">{{this.author}}</span></li>
+    {{/each}}
+</ul>
+
+<a href="/api/books" class="btn btn-light mt-4">Visit API</a>
