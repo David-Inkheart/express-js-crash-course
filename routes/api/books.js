@@ -13,7 +13,7 @@ router.get('/:id', (req, res) => {
     if(found) {
         res.json(books.filter(book => book.id === parseInt(req.params.id)));
     } else {
-        res.status(400).json({ msg: `No book with the id of ${req.params.id}`});
+        res.status(404).json({ msg: `No book with the id of ${req.params.id}`});
     }
 });
 
@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
     };
 
     if(!newBook.title || !newBook.author || !newBook.genre) {
-        return res.status(400).json({ msg: 'Please include a title, an author and a genre' });
+        return res.status(404).json({ msg: 'Please include a title, an author and a genre' });
     }
 
     books.push(newBook);
@@ -55,7 +55,7 @@ router.put('/:id', (req, res) => {
             }
         });
     } else {
-        res.status(400).json({ msg: `No book with the id of ${req.params.id}`});
+        res.status(404).json({ msg: `No book with the id of ${req.params.id}`});
     }
 });
 
